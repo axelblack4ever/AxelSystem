@@ -1,0 +1,7 @@
+{
+  "name": "AxelSystem",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
