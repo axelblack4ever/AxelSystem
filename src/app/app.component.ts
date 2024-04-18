@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+
+  public appPages = [
+    { title: 'Introducción', url: '/introduccion', icon: 'star' },
+    { title: 'Destacado', url: '/destacado', icon: 'images' },
+    { title: 'Inteligencias', url: '/inteligencias', icon: 'body' },
+    { title: 'Habilidades', url: '/habilidades', icon: 'body' }, 
+  ];
+
+  public labels = ['Introducción', 'Destacado', 'Inteligencias', 'Habilidades'];
+
   constructor() {}
 }
