@@ -14,8 +14,15 @@
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
+    <!-- Esta lista se genera con el array inteligencias incrustado en la definicion de la clase
     <ion-list>
       <ion-item *ngFor="let inteligencia of inteligencias" [routerLink]="['/detalles', inteligencia]" routerDirection="forward">{{inteligencia.Nombre}}</ion-item>
+    </ion-list> -->
+    <!-- Esta lista se genera accediendo a los datos generados por el servicio -->
+    <ion-list>
+      <ion-item *ngFor="let inteligencia of intServicio.inteligencias">
+        {{inteligencia.Nombre}}
+      </ion-item>
     </ion-list>
   </ion-content>  
 </ion-content>

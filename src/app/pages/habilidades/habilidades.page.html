@@ -14,7 +14,14 @@
     </ion-toolbar>
   </ion-header>
 <ion-content class="ion-padding">
-  <ion-list>
+  <!-- Esta lista se genera con el código hardwired -->
+  <!-- <ion-list>
     <ion-item *ngFor="let habilidad of habilidades" [routerLink]="['/detalles', habilidad]" routerDirection="forward">{{habilidad.Nombre}}</ion-item>
+  </ion-list>
+  Esta lista se genera accediendo al servicio de información -->
+  <ion-list>
+    <ion-item *ngFor="let habilidad of habServicio.habilidades">
+      {{habilidad.Nombre}}
+    </ion-item>
   </ion-list>
 </ion-content>
