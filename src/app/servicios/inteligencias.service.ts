@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,6 @@ export class InteligenciasService {
 
    getInteligencias() {
     let requestUrl = `${this.baseURL}/inteligencias.json`;
-    this.http.get(requestUrl).subscribe((data) => {this.inteligencias = data;});
+    this.http.get(requestUrl).subscribe((data) => {this.inteligencias = _.sortBy(data,'Nombre');});
    }
 }

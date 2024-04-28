@@ -19,8 +19,13 @@
       <ion-item *ngFor="let inteligencia of inteligencias" [routerLink]="['/detalles', inteligencia]" routerDirection="forward">{{inteligencia.Nombre}}</ion-item>
     </ion-list> -->
     <!-- Esta lista se genera accediendo a los datos generados por el servicio -->
+    <!-- <ion-list>
+      <ion-item *ngFor="let inteligencia of intServicio.inteligencias" [routerlink]="['/lista']" routerDirection="forward">
+        {{inteligencia.Nombre}}
+      </ion-item>
+    </ion-list> -->
     <ion-list>
-      <ion-item *ngFor="let inteligencia of intServicio.inteligencias">
+      <ion-item *ngFor="let inteligencia of intServicio.inteligencias" [routerLink]="['/lista',{Categoria: 'Inteligencia', Criterio: inteligencia.ID, Nombre: inteligencia.Nombre}]" routerDirection="forward">
         {{inteligencia.Nombre}}
       </ion-item>
     </ion-list>
