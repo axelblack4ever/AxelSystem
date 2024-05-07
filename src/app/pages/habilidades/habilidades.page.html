@@ -20,7 +20,7 @@
   </ion-list>
   Esta lista se genera accediendo al servicio de información -->
   <ion-list>
-    <ion-item *ngFor="let habilidad of habServicio.habilidades">
+    <ion-item *ngFor="let habilidad of habServicio.habilidades" [routerLink]="'/detalles/' + habilidad.ID" routerDirection="forward">
       {{habilidad.Nombre}}
     </ion-item>
   </ion-list>
