@@ -13,4 +13,14 @@
       <ion-title size="large">Destacado</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-list>
+    <ng-container *ngFor="let habilidad of habServicio.habilidades">
+      <ion-item *ngIf="favServicio.favIDs.includes(habilidad.ID)" [routerLink]="'/detalles/'+habilidad.ID" routerDirection="forward">
+        {{ habilidad.Nombre }}
+      </ion-item>
+    </ng-container>
+    <ion-item *ngIf="favServicio.favIDs?.length==0">
+      ¡No has elegido ninguna habilidad destacada!      
+    </ion-item>
+  </ion-list>
 </ion-content>

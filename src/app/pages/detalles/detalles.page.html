@@ -19,3 +19,10 @@
     </ion-card-content>
   </ion-card>
 </ion-content>
+<ion-footer class="ion-padding">
+  <ion-button (click)="favServicio.add(habilidad.ID); esFavorito=true;"
+  *ngIf="!esFavorito" expand="block">Agregar a Destacadas</ion-button>
+  <ion-button (click)="favServicio.remove(habilidad.ID); esFavorito=false;"
+  *ngIf="esFavorito"
+  expand="block">Quitar de Destacadas</ion-button>
+</ion-footer>
