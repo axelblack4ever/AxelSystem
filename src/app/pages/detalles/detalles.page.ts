@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HabilidadesService } from 'src/app/servicios/habilidades.service';
 import { FavoritosService } from 'src/app/servicios/favoritos.service';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, AlertController } from '@ionic/angular';
 import * as _ from 'lodash';
 
 @Component({
@@ -16,7 +16,9 @@ export class DetallesPage implements OnInit {
   habilidad: any;
   esFavorito: boolean = false;
 
-  constructor(private ActivatedRoute: ActivatedRoute, public habServicio: HabilidadesService, public favServicio: FavoritosService, private actionSheet: ActionSheetController) {
+  constructor(private ActivatedRoute: ActivatedRoute, public habServicio: HabilidadesService, 
+    public favServicio: FavoritosService, private actionSheet: ActionSheetController,
+    private alertCtrl: AlertController) {
    }
 
    async presentActionSheet() {
@@ -36,8 +38,10 @@ export class DetallesPage implements OnInit {
           role: (this.esFavorito) ? 'destructive' : '',
           handler: () => {
             if (this.esFavorito) {
-              this.favServicio.remove(this.habilidad.ID);
-              this.esFavorito = false;
+              this.presentarAlerta();
+              // Se comenta la línea para incluir la alerta
+              // this.favServicio.remove(this.habilidad.ID);
+              // this.esFavorito = false;
             } else {
               this.favServicio.add(this.habilidad.ID);
               this.esFavorito = true;
@@ -51,6 +55,23 @@ export class DetallesPage implements OnInit {
       ]
     });
     await actionSheet.present();
+   }
+
+   async presentarAlerta() {
+    const alert = await this.alertCtrl.create({
+      header: '¿Eliminar de destacados?',
+      message: '¿Realmente deseas eliminar esta habilidad de la lista de destacados?',
+      buttons: [
+        { text: 'No'},
+        { text: 'Si', handler: () => {
+            this.favServicio.remove(this.habilidad.ID);
+            this.esFavorito = false;
+          }
+        }
+      ]
+    }
+    );
+    await alert.present();
    }
 
   ngOnInit() {
