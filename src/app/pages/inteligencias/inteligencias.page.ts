@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { InteligenciasService } from 'src/app/servicios/inteligencias.service';
+import { HabilidadesService } from 'src/app/servicios/habilidades.service';
+import * as _ from 'lodash';
+
+interface INT {
+  ID: number;
+  Nombre: string;
+  Conteo: number 
+}
 
 @Component({
   selector: 'app-inteligencias',
@@ -7,21 +15,21 @@ import { InteligenciasService } from 'src/app/servicios/inteligencias.service';
   styleUrls: ['./inteligencias.page.scss'],
 })
 export class InteligenciasPage implements OnInit {
+  // Declaro la variable para que pueda ser accedida en la template HTML
+  conteo: number = 0;
 
-  // inteligencias = [
-  //   {ID: 1, Nombre: "Lingüistica", Descripcion:"Capacidad para el lenguaje, la comunicación verbal y escrita"},
-  //   {ID: 2, Nombre: "Lógico-matemática", Descripcion:"Habilidad para el razonamiento lógico, el pensamiento abstracto y el cálculo matemático"},
-  //   {ID: 3, Nombre: "Espacial", Descripcion:"Aptitud para comprender y manipular objetos en el espacio, así como para interpretar mapas y planos"},
-  //   {ID: 4, Nombre: "Rítmica", Descripcion:"Sensibilidad al sonido, capacidad para reconocer patrones musicales y habilidad para tocar instrumentos"},
-  //   {ID: 5, Nombre: "Interpersonal", Descripcion:"Habilidad para interactuar y comprender a otras personas, empatía y habilidades sociales"},
-  //   {ID: 6, Nombre: "Intrapersonal", Descripcion:"Conciencia de sí mismo, autoconocimiento, autocontrol y capacidad para la introspección"},
-  //   {ID: 7, Nombre: "Corporal kinestésica", Descripcion:"Destreza física, coordinación motora y habilidades atléticas"},
-  //   {ID: 8, Nombre: "Naturalista", Descripcion:"Conexión con la naturaleza, capacidad para identificar y clasificar elementos del entorno natural"},
-  // ];  
-
-  constructor(public intServicio: InteligenciasService) { }
+  constructor(public intServicio: InteligenciasService, public habServicio: HabilidadesService) { }
 
   ngOnInit() {
+    // Bucle para recorrer cada inteligencia obtenida desde el servicio
+    this.intServicio.inteligencias.forEach((int: INT) => 
+      {
+        // Obtengo el listado de habilidades para la inteligencia referenciada mediante un filtro de lodash
+        // Utilizo la interface declarada en el bucle para generar una función que permite realizar el filtro
+        const ints = _.filter(this.habServicio.habilidades, function (o) { return o.Inteligencia==int.ID});
+        // Asigno al atributo de conteo el valor de la longitud del array generado con la lista de habilidades
+        this.conteo = ints.length;
+      }
+    );
   }
-
 }
