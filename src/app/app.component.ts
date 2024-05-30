@@ -8,6 +8,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppComponent {
 
+  settings: any = {}
+
   public appPages = [
     { title: 'Introducción', url: '/introduccion', icon: 'star' },
     { title: 'Destacado', url: '/destacado', icon: 'images' },
@@ -18,4 +20,9 @@ export class AppComponent {
   public labels = ['Introducción', 'Destacado', 'Inteligencias', 'Habilidades'];
 
   constructor() {}
+
+  // cambio de settings
+  updateSettings() {
+    //console.log(this.settings.notifications);
+  }
 }
