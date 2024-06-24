@@ -15,6 +15,7 @@ export class AppComponent {
     { title: 'Destacado', url: '/destacado', icon: 'images' },
     { title: 'Inteligencias', url: '/inteligencias', icon: 'body' },
     { title: 'Habilidades', url: '/habilidades', icon: 'body' }, 
+    { title: 'Pruebas', url: '/pruebas', icon: 'bulb' }, 
   ];
 
   public labels = ['Introducción', 'Destacado', 'Inteligencias', 'Habilidades'];
