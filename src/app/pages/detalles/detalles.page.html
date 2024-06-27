@@ -30,6 +30,26 @@
       </ion-chip>
     </ion-card-content>
   </ion-card>
+  <!-- Un boton de compartir FAB (Floating Action Button) -->
+   <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="share-social"></ion-icon>
+    </ion-fab-button>      
+      <ion-fab-list side="start">
+        <ion-fab-button (click)="openSocial('facebook')">
+          <ion-icon name="logo-facebook">jajajaja</ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="openSocial('twitter')">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="openSocial('instagram')">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="openSocial('whatsapp')">
+          <ion-icon name="logo-whatsapp"></ion-icon>
+        </ion-fab-button>   
+      </ion-fab-list>
+   </ion-fab>
 </ion-content>
 <ion-footer class="ion-padding">
   <ion-button expand="block" (click)="presentActionSheet()">Opciones</ion-button>

@@ -74,6 +74,11 @@ export class DetallesPage implements OnInit {
     await alert.present();
    }
 
+   // Al clickear en un botón de red social
+   openSocial(app: string) {
+    console.log('¡El usuario desea compartir esta habilidad a través de ' + app + '!');
+   }
+
   ngOnInit() {
     this.recibido = this.ActivatedRoute.snapshot.params;
     let id = this.ActivatedRoute.snapshot.paramMap.get('id');
